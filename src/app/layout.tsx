@@ -87,7 +87,8 @@ export default async function RootLayout({
       >
         <ThemeProvider
           attribute="data-theme"
-          defaultTheme={config.THEME_NAME ? `${config.THEME_NAME}-light` : 'simple-light'}
+          defaultTheme="simple-light"
+          forcedTheme="simple-light"
           enableSystem={false}
           disableTransitionOnChange
           storageKey="theme"

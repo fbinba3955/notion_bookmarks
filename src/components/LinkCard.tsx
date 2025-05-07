@@ -78,33 +78,34 @@ export default function LinkCard({ link, className }: LinkCardProps) {
         whileTap={{ scale: 0.98 }}
         className={`
           block group relative
-          p-4 rounded-xl border border-border/50
+          p-3 rounded-lg border border-border/50
           transition-all duration-300 ease-out
-          hover:shadow-lg hover:shadow-primary/5
+          hover:shadow-md hover:shadow-primary/5
+          hover:border-primary/20
           bg-card/50 backdrop-blur-sm
-          h-[160px] min-w-[280px]
+          h-[130px] min-w-[200px]
           overflow-hidden
           ${className || ''}
         `}
       >
         {/* 内容容器 */}
-        <div className="flex flex-col h-full gap-2">
+        <div className="flex flex-col h-full gap-1.5">
           {/* 图标和名称行 */}
-          <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="flex items-center gap-2 flex-shrink-0">
             {/* 图标容器 */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.1 }}
-              className="relative w-10 h-10 rounded-xl overflow-hidden transition-all shrink-0
-                       bg-muted/50 p-1.5 border border-border/50"
+              className="relative w-8 h-8 rounded-md overflow-hidden transition-all shrink-0
+                       bg-muted/50 p-1 border border-border/50"
             >
               <Image
                 src={getIconUrl(link)}
                 alt="Site Icon"
                 fill
                 className="object-contain"
-                sizes="40px"
+                sizes="32px"
               />
             </motion.div>
             
@@ -115,7 +116,7 @@ export default function LinkCard({ link, className }: LinkCardProps) {
                 onMouseEnter={(e) => handleMouseEnter(e, setTitleTooltip)}
                 onMouseLeave={() => handleMouseLeave(setTitleTooltip)}
               >
-                <h3 className="text-lg text-foreground
+                <h3 className="text-base font-medium text-foreground
                                group-hover:text-primary
                                transition-colors line-clamp-1 pr-6">
                   {link.name}
@@ -124,7 +125,7 @@ export default function LinkCard({ link, className }: LinkCardProps) {
               {/* 固定位置的外链图标 */}
               <div className="absolute right-0 top-1/2 -translate-y-1/2">
                 <IconExternalLink 
-                  className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" 
+                  className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" 
                 />
               </div>
             </div>
@@ -137,7 +138,7 @@ export default function LinkCard({ link, className }: LinkCardProps) {
               onMouseEnter={(e) => handleMouseEnter(e, setDescTooltip)}
               onMouseLeave={() => handleMouseLeave(setDescTooltip)}
             >
-              <p className="text-sm text-foreground/80
+              <p className="text-xs text-foreground/70
                          group-hover:text-foreground
                          line-clamp-2 transition-colors">
                 {link.desc}
@@ -147,26 +148,26 @@ export default function LinkCard({ link, className }: LinkCardProps) {
 
           {/* 标签行 - 放在底部 */}
           {link.tags && link.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 flex-shrink-0">
-              {link.tags.slice(0, 3).map((tag) => (
+            <div className="flex flex-wrap gap-1 flex-shrink-0 mt-auto">
+              {link.tags.slice(0, 2).map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center px-2 py-0.5 text-xs rounded-md
+                  className="inline-flex items-center px-1.5 py-0.5 text-xs rounded-md
                            bg-muted/40 text-muted-foreground
                            group-hover:bg-primary/10 group-hover:text-primary/90
                            transition-colors"
                   title={tag}
                 >
-                  <span className="truncate max-w-[80px]">{tag}</span>
+                  <span className="truncate max-w-[60px] text-[10px]">{tag}</span>
                 </span>
               ))}
-              {link.tags.length > 3 && (
-                <span className="inline-flex items-center px-2 py-0.5 text-xs rounded-md
+              {link.tags.length > 2 && (
+                <span className="inline-flex items-center px-1.5 py-0.5 text-[10px] rounded-md
                               bg-muted/40 text-muted-foreground
                               group-hover:bg-primary/10 group-hover:text-primary/90
                               transition-colors shrink-0"
                 >
-                  +{link.tags.length - 3}
+                  +{link.tags.length - 2}
                 </span>
               )}
             </div>
@@ -177,6 +178,10 @@ export default function LinkCard({ link, className }: LinkCardProps) {
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-transparent via-transparent to-transparent
                       group-hover:from-primary/5 group-hover:via-primary/2 group-hover:to-transparent
                       transition-colors duration-500" />
+
+        {/* 新增的底部亮光效果 */}
+        <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-transparent to-transparent
+                     group-hover:via-primary/30 transition-colors duration-500" />
       </motion.a>
 
       {/* 提示框 */}

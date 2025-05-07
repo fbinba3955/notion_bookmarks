@@ -55,10 +55,10 @@ export default function LinkContainer({
 
         return (
           <section key={category.id} id={category.id} className="space-y-8">
-            <div className="flex items-center space-x-3 pb-2 border-b">
+            <div className="flex items-center space-x-3 pb-2 border-b border-b-primary/10">
               {category.iconName &&
               Icons[category.iconName as keyof typeof Icons] ? (
-                <div className="w-7 h-7 p-1 rounded-lg bg-primary/5 text-primary">
+                <div className="w-8 h-8 p-1.5 rounded-lg bg-primary/10 text-primary flex items-center justify-center shadow-sm">
                   {React.createElement(
                     Icons[
                       category.iconName as keyof typeof Icons
@@ -67,7 +67,14 @@ export default function LinkContainer({
                   )}
                 </div>
               ) : null}
-              <h2 className="text-2xl font-bold tracking-tight">{category.name}</h2>
+              <div>
+                <h2 className="text-xl font-bold tracking-tight text-foreground/90 flex items-center">
+                  {category.name}
+                  <span className="ml-2 px-2 py-0.5 bg-primary/10 text-primary text-sm rounded-full font-normal">
+                    {Object.values(categoryLinks).reduce((acc, links) => acc + links.length, 0)}
+                  </span>
+                </h2>
+              </div>
             </div>
 
             <div className="space-y-12">
@@ -83,12 +90,14 @@ export default function LinkContainer({
                 >
                   <div className="flex items-center space-x-2">
                     <div className="w-1 h-1 rounded-full bg-primary"></div>
-                    <h3 className="text-lg font-medium text-foreground/90">
+                    <h3 className="text-lg font-medium text-foreground/90 flex items-center">
                       {subCategory}
+                      <span className="ml-2 text-xs px-1.5 py-0.5 rounded-md bg-muted/50 text-muted-foreground">
+                        {links.length}
+                      </span>
                     </h3>
-                    <div className="text-sm text-muted-foreground">({links.length})</div>
                   </div>
-                  <div className="grid gap-3 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+                  <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
                     {links.map((link) => (
                       <LinkCard key={link.id} link={link} />
                     ))}

@@ -7,25 +7,35 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
   theme: {
     container: {
       center: true,
-      padding: "1rem",
+      padding: "2rem",
       screens: {
         "2xl": "1400px",
       },
     },
     extend: {
       colors: {
-        border: "hsl(var(--border-hsl))",
-        input: "hsl(var(--input-hsl))",
-        ring: "hsl(var(--ring-hsl))",
-        background: "hsl(var(--background-hsl))",
-        foreground: "hsl(var(--background-foreground-hsl))",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary-hsl))",
-          foreground: "hsl(var(--primary-foreground-hsl))",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+          50: "hsl(var(--primary-50))",
+          100: "hsl(var(--primary-100))",
+          200: "hsl(var(--primary-200))",
+          300: "hsl(var(--primary-300))",
+          400: "hsl(var(--primary-400))",
+          500: "hsl(var(--primary-500))",
+          600: "hsl(var(--primary-600))",
+          700: "hsl(var(--primary-700))",
+          800: "hsl(var(--primary-800))",
+          900: "hsl(var(--primary-900))",
+          950: "hsl(var(--primary-950))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary-hsl))",
@@ -77,5 +87,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 } satisfies Config;
