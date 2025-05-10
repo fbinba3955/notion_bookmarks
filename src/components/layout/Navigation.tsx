@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import * as Icons from 'lucide-react'
 import { WebsiteConfig } from '@/types/notion'
+import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 
 interface Category {
   id: string
@@ -72,9 +73,12 @@ export default function Navigation({ categories, config = defaultConfig }: Navig
             <Icons.Rocket className="w-5 h-5 text-primary" />
             <span className="font-medium text-gray-900 dark:text-white">{config.SITE_TITLE || 'Notion Bookmarks'}</span>
           </div>
-          <button className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
-            <Icons.Menu className="w-5 h-5 text-gray-600 dark:text-gray-400" />
-          </button>
+          <div className="flex items-center space-x-2">
+            <ThemeSwitcher />
+            <button className="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
+              <Icons.Menu className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+            </button>
+          </div>
         </div>
         <div className="overflow-x-auto flex items-center h-12 border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 scrollbar-none">
           <div className="flex px-4 min-w-full">
@@ -102,13 +106,14 @@ export default function Navigation({ categories, config = defaultConfig }: Navig
       <nav className="hidden lg:block w-[280px] flex-shrink-0 h-screen sticky top-0 bg-white dark:bg-gray-900 overflow-y-auto border-r border-gray-200 dark:border-gray-800">
         <div className="flex flex-col h-full">
           {/* Logo and Title */}
-          <div className="flex items-center h-16 px-6 border-b border-gray-200 dark:border-gray-800">
+          <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200 dark:border-gray-800">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center">
                 <Icons.Rocket className="w-5 h-5 text-primary" />
               </div>
               <span className="font-bold text-lg text-gray-900 dark:text-white">{config.SITE_TITLE || 'Notion Bookmarks'}</span>
             </div>
+            <ThemeSwitcher />
           </div>
           
           {/* Navigation Section */}

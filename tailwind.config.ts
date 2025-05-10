@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
+import tailwindForms from '@tailwindcss/forms';
 
 export default {
   content: [
@@ -7,6 +8,7 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: ["class", "[data-theme='simple-dark']"],
   theme: {
     container: {
       center: true,
@@ -88,6 +90,6 @@ export default {
     },
   },
   plugins: [
-    require('@tailwindcss/forms'),
+    tailwindForms,
   ],
 } satisfies Config;

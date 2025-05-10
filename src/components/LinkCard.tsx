@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import { Link } from '@/types/notion';
 import { motion } from 'framer-motion';
-import { ExternalLink, Star, MoreHorizontal } from 'lucide-react';
 import { useState } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -74,7 +73,7 @@ export default function LinkCard({ link, className }: LinkCardProps) {
         className={`
           group relative overflow-hidden
           bg-white dark:bg-gray-800 rounded-xl
-          border border-gray-200 dark:border-gray-700
+          border border-gray-200 dark:border-gray-600
           p-4 h-[140px] shadow-sm
           hover:shadow-md hover:border-primary/30 dark:hover:border-primary/30
           transition-all duration-200
